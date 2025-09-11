@@ -1,0 +1,30 @@
+﻿@model Entity_Layer.Concrete.User
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit User</h1>
+
+@using (Html.BeginForm("EditUser", "User", FormMethod.Post))
+{
+    <div class="form-group">
+        @*@Html.Label("User ID")
+        @Html.TextBoxFor(x => x.UserId, new { @class = "form-control" })*@
+        <br />
+        @Html.Label("User Name")
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+        <br />
+        @Html.Label("User Role")
+        @Html.TextBoxFor(x => x.UserRole, new { @class = "form-control" })
+        <br />
+        @Html.Label("User Mail")
+        @Html.TextAreaFor(x => x.UserMail, new { @class = "form-control" })
+
+        @Html.Label("User Password")
+        @Html.TextAreaFor(x => x.UserPassword, new { @class = "form-control" })
+ <br />
+        <button class="btn btn-success">Update</button>
+
+    </div>
+}

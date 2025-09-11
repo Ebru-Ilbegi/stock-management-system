@@ -1,0 +1,59 @@
+﻿@model Entity_Layer.Concrete.Movement
+@{
+    ViewBag.Title = "Add Movement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add Movement</h2>
+
+@using (Html.BeginForm("AddMovement", "Movement", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.MovementId)
+
+    <div class="form-group">
+        @Html.Label("Select Item")
+        @Html.DropDownListFor(x => x.ItemId,
+            (List<SelectListItem>)ViewBag.itemList,
+            "Choose Item",
+            new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ItemId)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Select Warehouse")
+        @Html.DropDownListFor(x => x.WareHouseId,
+            (List<SelectListItem>)ViewBag.warehouseList,
+            "Choose Warehouse",
+            new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WareHouseId)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Transection Type")
+        @Html.TextBoxFor(x => x.Transaction_Type, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Transaction_Type)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Amount")
+        @Html.TextBoxFor(x => x.Amount, new { @class = "form-control", type = "number", min = "1" })
+        @Html.ValidationMessageFor(x => x.Amount)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Date")
+        @Html.TextBoxFor(x => x.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(x => x.Date)
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Destination (if Exit)")
+        @Html.TextBoxFor(x => x.Destination, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Destination)
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Save Movement</button>
+    </div>
+}

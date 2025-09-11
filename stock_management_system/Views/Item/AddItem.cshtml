@@ -1,0 +1,41 @@
+﻿@model Entity_Layer.Concrete.Item
+@{
+    ViewBag.Title = "AddItem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Add Item</h1>
+<br />
+@using (Html.BeginForm("AddItem", "Item", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.ItemId)
+
+        @Html.Label("Item Name")
+        @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ItemName)
+
+        @Html.Label("Unit Price")
+        @Html.TextBoxFor(x => x.Unit_Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Unit_Price)
+
+        @Html.Label("Brand")
+        @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brandList, "Choose Brand", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BrandId)
+
+        @Html.Label("Warehouse")
+        @Html.DropDownListFor(x => x.WareHouseId, (List<SelectListItem>)ViewBag.warehouseList, "Choose WareHouse", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WareHouseId)
+
+        @Html.Label("Category")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryList, "Choose Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId)
+
+
+        <br /><br />
+        <button class="btn btn-info">Save</button>
+    </div>
+}
+
+

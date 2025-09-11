@@ -1,0 +1,23 @@
+﻿@model Entity_Layer.Concrete.Brand
+
+@{
+    ViewBag.Title = "EditBrand";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditBrand</h2>
+
+
+@using (Html.BeginForm("EditBrand", "Brand", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.BrandId)
+        <br />
+        @Html.Label("Brand Name")
+        @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+        <br />
+
+        <button class="btn btn-success">Update</button>
+
+    </div>
+}

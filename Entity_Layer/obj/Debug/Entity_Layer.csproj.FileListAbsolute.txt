@@ -1,0 +1,12 @@
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\Entity_Layer.dll
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\Entity_Layer.pdb
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\obj\Debug\Entity_Layer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\obj\Debug\Entity_Layer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\obj\Debug\Entity_Layer.dll
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\obj\Debug\Entity_Layer.pdb
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\Entity_Layer.dll.config
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\EntityFramework.dll
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\EntityFramework.xml
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\LENOVO\Desktop\yazılım\internship_project\Stock_Management_System\Entity_Layer\obj\Debug\Entity_L.6B132233.Up2Date

@@ -1,0 +1,59 @@
+﻿@using Entity_Layer.Concrete
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+{@Html.Action("CategoryPartial", "Category")}
+
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+            {
+                <th>Management</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Where(x => x.CategoryStatus == true))
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+
+                @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+                {
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("CategoryDelete", "Category", new { id = item.CategoryId })">
+                            <i class="fas fa-trash"> Delete </i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" href="@Url.Action("EditCategory", "Category", new { id = item.CategoryId })">
+                            <i class="fas fa-trash"> Update </i>
+                        </a>
+                    </td>
+}
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})
+
+

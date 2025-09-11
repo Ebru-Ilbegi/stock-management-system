@@ -1,0 +1,66 @@
+﻿@using Entity_Layer.Concrete
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Movement>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+{
+    <p>
+        <a href="@Url.Action("AddMovement", "Movement")" class="btn btn-primary"> Add New Movement </a>
+    </p>
+}
+<br/>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item ID</th>
+                <th>Warehouse</th>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Destination</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Where(x => x.MovementStatus == true))
+            {
+                <tr>
+                    <td>@item.MovementId</td>
+                    <td>@item.Item.ItemName</td>
+                    <td>@item.Warehouse.WareHouseName</td>
+                    <td>@item.Transaction_Type</td>
+                    <td>@item.Amount</td>
+                    <td>@item.Date.ToShortDateString()</td>
+                    <td>@item.Destination</td>
+
+                    @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+                    {
+                        <td>
+
+                            <a href="@Url.Action("MovementDelete", "Movement", new { id = item.MovementId })" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Are you sure to delete this movement?');">
+                                <i class="fas fa-trash"> Delete </i>
+                            </a>
+                            <a href="@Url.Action("EditMovement", "Movement", new { id = item.MovementId })" class="btn btn-sm btn-warning">
+                                <i class="fas fa-trash"> Edit </i>
+                            </a>
+</td>}
+                    </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string>
+        { "page-link"}
+    })
+

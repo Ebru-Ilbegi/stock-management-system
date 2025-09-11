@@ -1,0 +1,27 @@
+﻿@model Entity_Layer.Concrete.Warehouse
+@{
+    ViewBag.Title = "EditWareHouse";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditWareHouse</h2>
+
+
+@using (Html.BeginForm("EditWareHouse", "WareHouse", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.WareHouseId)
+        <br />
+        @Html.Label("WareHouse Name")
+        @Html.TextBoxFor(x => x.WareHouseName, new { @class = "form-control" })
+        <br />
+        @Html.Label("WareHouse Location")
+        @Html.TextBoxFor(x => x.WareHouseLocation, new { @class = "form-control" })
+        <br />
+      
+        <button class="btn btn-success">Update</button>
+
+    </div>
+}
+
+

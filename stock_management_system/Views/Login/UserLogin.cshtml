@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="~/login-form-19/css/style.css" rel="stylesheet" />
+
+
+</head>
+
+
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap py-5">
+                        <h2 class="text-center mb-0" style="color: #ffff;"><i>User Login</i></h2>
+                        <br />
+                        <h3 class="text-center mb-0">Welcome</h3>
+
+                        @using (Html.BeginForm("UserLogin", "Login", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+                                <input type="text" name="UserMail" class="form-control" placeholder="Email" required />
+                            </div>
+                            <div class="form-group">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+                                <input type="password" name="UserPassword" class="form-control" placeholder="Password" required />
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-100 text-md-right">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button href="#" type="submit" class="btn form-control btn-primary rounded submit px-3">Log in</button>
+                            </div>
+                        }
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="alert alert-danger text-center">
+                                @TempData["Error"]
+                            </div>
+                        }
+
+
+                        <div class="w-100 text-center mt-4 text">
+
+                            <a href="/Home/Index">Go to home page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="~/login-form-19/js/jquery.min.js"></script>
+    <script src="~/login-form-19/js/popper.js"></script>
+    <script src="~/login-form-19/js/bootstrap.min.js"></script>
+    <script src="~/login-form-19/js/main.js"></script>
+
+</body>
+</html>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-image: url('/login-form-19/images/ai-generated-8889159_1280.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #fff;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+</style>

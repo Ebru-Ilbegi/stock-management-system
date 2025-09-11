@@ -1,0 +1,24 @@
+﻿@model  Entity_Layer.Concrete.Brand
+
+@{
+    ViewBag.Title = "AddBrand";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Add Brand</h1>
+<br />
+@using (Html.BeginForm("AddBrand", "Brand", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.BrandId)
+
+        @Html.Label("Brand Name")
+        @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BrandName)
+        <br /><br />
+        <button class="btn btn-info">Save</button>
+    </div>
+}
+
+

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Warehouse Stacked Chart";
+    Layout = null;
+}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var chartData = @Html.Raw(ViewBag.StackedChartData);
+        var data = google.visualization.arrayToDataTable(chartData);
+
+        var options = {
+            title: 'Warehouse Stock by Category',
+            isStacked: true,
+            hAxis: { title: 'Warehouse' },
+            vAxis: { title: 'Stock' },
+            legend: { position: 'top' }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('stacked_chart'));
+        chart.draw(data, options);
+    }
+</script>
+
+<div id="stacked_chart" style="width: 1000px; height: 500px;"></div>

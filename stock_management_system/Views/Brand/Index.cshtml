@@ -1,0 +1,61 @@
+﻿@using Entity_Layer.Concrete
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Brand>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+
+@if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+{@Html.Action("BrandPartial", "Brand")}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+            {
+                <th>Management</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Where(x => x.BrandStatus == true))
+        {
+            <tr>
+                <td>@item.BrandId</td>
+                <td>@item.BrandName</td>
+                <td>
+                    @item.BrandStatus
+
+                    @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+                    {
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("BrandDelete", "Brand", new { id = item.BrandId })">
+                            <i class="fas fa-trash"> Delete </i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" href="@Url.Action("EditBrand", "Brand", new { id = item.BrandId })">
+                            <i class="fas fa-trash"> Update </i>
+                        </a>
+
+                    </td>
+                }
+                </tr>
+            }
+
+    </tbody>
+</table>
+@Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})
+

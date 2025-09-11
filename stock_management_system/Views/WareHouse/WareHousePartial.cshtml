@@ -1,0 +1,38 @@
+﻿<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Add New WareHouse
+</button>
+
+
+<div class="modal" id="Modal1">
+    //data tagetdaki id ile aynı olmalı
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add WareHouse</h2>
+            </div>
+            <form method="Post" action="/WareHouse/AddWareHouse/">
+                <div class="modal-body">
+                    <label>Name</label>
+                    <input type="text" name="WareHouseName" class="form-control" />
+                    <br />
+                    <label>Location</label>
+                    <input type="text" name="WareHouseLocation" class="form-control" />
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Add New User
+</button>
+
+
+<div class="modal" id="Modal1">
+    //data tagetdaki id ile aynı olmalı
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add User</h2>
+            </div>
+            <form method="Post" action="/User/AddUser/">
+                <div class="modal-body">
+
+
+                    <label>Name</label>
+                    <input type="text" name="UserName" class="form-control" />
+
+                    <label>Role</label>
+                    <input type="text" name="UserRole" class="form-control" />
+
+                    <label>Mail</label>
+                    <input type="text" name="UserMail" class="form-control" />
+
+                    <label>Password</label>
+                    <input type="text" name="UserPassword" class="form-control" />
+
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

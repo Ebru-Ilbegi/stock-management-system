@@ -1,0 +1,103 @@
+﻿@using Entity_Layer.Concrete
+@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Item>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+{
+    @Html.Action("ItemPartial", "Item")
+
+
+    <div>
+        <a href="@Url.Action("AddItem", "Item")" class="btn btn-primary">
+            Add Item
+        </a>
+    </div>
+}
+    <br />
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Unıt Price</th>
+                <th>Stock</th>
+                <th>WareHouse</th>
+                <th>Category</th>
+                <th>Management</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Where(x => x.ItemStatus == true))
+            {
+                <tr>
+                    <td>@item.ItemId</td>
+                    <td>@item.ItemName</td>
+                    <td> @item.Unit_Price</td>
+                    <td>@item.Stock</td>
+                    <td> @item.Warehouse.WareHouseName</td>
+                    <td> @item.Category.CategoryName</td>
+
+                    @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+                    {
+                        <td>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("ItemDelete", "Item", new { id = item.ItemId })">
+                                <i class="fas fa-trash"> Delete </i>
+                            </a>
+                            <a class="btn btn-warning editItemBtn  btn-sm" data-id="@item.ItemId" data-toggle="modal" data-target="#EditModal">
+                                <i class="fas fa-trash"> Edit </i>
+                            </a>
+                        </td>}
+                    </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".editItemBtn").click(function () {
+                var itemId = $(this).data("id");
+
+                $.ajax({
+                    url: '/Item/GetItem',
+                    type: 'GET',
+                    data: { id: itemId },
+                    success: function (data) {
+                        $("#editItemId").val(data.ItemId);
+                        $("#editItemName").val(data.ItemName);
+                        $("#editUnitPrice").val(data.Unit_Price);
+                        $("#editStock").val(data.Stock);
+
+                        $("#editBrandId").html(data.BrandListHtml);
+                        $("#editWareHouseId").html(data.WareHouseListHtml);
+                        $("#editCategoryId").html(data.CategoryListHtml);
+
+                        $("#editBrandId").val(data.BrandId);
+                        $("#editWareHouseId").val(data.WareHouseId);
+                        $("#editCategoryId").val(data.CategoryId);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    @Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string>
+        { "page-link"}
+    })
+
+
+
