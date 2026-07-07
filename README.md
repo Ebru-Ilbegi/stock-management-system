@@ -1,6 +1,6 @@
 # 📦 Stock Management System / Stok Yönetim Sistemi
 
-### 🇬🇧 English
+### English
 
 This project is a comprehensive, enterprise-level Stock Management System developed using ASP.NET MVC and N-Tier Architecture. Built from scratch during an IT department internship at a municipality, the system provides a secure, scalable, and real-world solution for inventory, warehouse, and user management.
 
@@ -33,12 +33,9 @@ The architecture strictly follows the **Generic Repository Pattern** and incorpo
 4. Open the Package Manager Console and run `Update-Database` to generate the tables.
 5. Build and run the project.
 
-*(Tip: Add a screenshot or GIF of your project's dashboard here)*
+🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️🕹️
 
----
----
-
-### 🇹🇷 Türkçe
+### Türkçe
 
 Bu proje, ASP.NET MVC ve N-Katmanlı Mimari kullanılarak geliştirilmiş kurumsal seviyede kapsamlı bir Stok Yönetim Sistemi'dir. Bir belediyenin Bilgi İşlem departmanındaki staj sürecinde sıfırdan tasarlanan bu sistem; envanter, depo ve kullanıcı yönetimi için güvenli, ölçeklenebilir ve gerçek dünya ihtiyaçlarına uygun bir çözüm sunar.
 
@@ -70,5 +67,3 @@ Sistem mimarisi **Generic Repository (Genel Depo)** tasarım desenine sıkı sı
 3. Kendi MSSQL sunucunuza bağlanmak için `Web.config` dosyasındaki veritabanı bağlantı yolunu (Connection String) güncelleyin.
 4. Veri tabanını oluşturmak için Package Manager Console üzerinden `Update-Database` komutunu çalıştırın.
 5. Projeyi derleyip (Build) başlatın.
-
-*(İpucu: Buraya projenin anasayfasından veya grafik ekranından bir ekran görüntüsü ekleyebilirsiniz)*
