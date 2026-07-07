@@ -1,9 +1,11 @@
 ﻿using Business_Layer.Abstract;
 using Data_Access_Layer.Abstract;
+using Data_Access_Layer.entityframework;
 using Entity_Layer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +46,11 @@ namespace Business_Layer.Concreate
         public void ItemUpdate(Item ıtem)
         {
             _itemdal.Update(ıtem);
+        }
+
+        public List<Item> GetListByFilter(Expression<Func<Item, bool>> filter)
+        {
+            return _itemdal.List(filter);
         }
     }
 }

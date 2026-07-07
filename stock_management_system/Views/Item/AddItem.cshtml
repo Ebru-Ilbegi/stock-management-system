@@ -20,6 +20,10 @@
         @Html.TextBoxFor(x => x.Unit_Price, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.Unit_Price)
 
+        @Html.Label("Stock")
+        @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Stock)
+
         @Html.Label("Brand")
         @Html.DropDownListFor(x => x.BrandId, (List<SelectListItem>)ViewBag.brandList, "Choose Brand", new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.BrandId)

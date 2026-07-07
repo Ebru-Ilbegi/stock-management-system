@@ -147,5 +147,24 @@ namespace stock_management_system.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [CustomAuthorize("admin", "user")]
+        public ActionResult SearchBar(int p = 1, string search = null)
+        {
+            ViewBag.CurrentSearch = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                // Arama boşsa sadece aktif ürünleri getir
+                var itemvalues = im.GetListByFilter(x => x.ItemStatus == true).ToPagedList(p, 20);
+                return View("Index", itemvalues);
+            }
+
+            // Hem aktif ürünleri (Status == true) hem de aranan kelimeyi (ItemName) filtrele
+            var filtereditems = im.GetListByFilter(x => x.ItemStatus == true && x.ItemName.Contains(search))
+                                  .ToPagedList(p, 20);
+
+            return View("Index", filtereditems);
+        }
     }
 }

@@ -13,49 +13,58 @@
     @Html.Action("UserPartial", "User")
 }
 
-    <br />
+<form method="get" action="/User/SearchBar" style="margin-bottom: 20px;">
+    <div style="display: flex; gap: 10px;">
+        <input type="text" name="search" class="form-control" placeholder="Kullanıcı adı veya mail ara..." value="@ViewBag.CurrentSearch" />
+        <button type="submit" class="btn btn-primary">Ara</button>
+    </div>
+</form>
 
-    <table class="table table-bordered">
-        <thead>
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Mail</th>
+            <th>Management</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x => x.UserStatus == true))
+        {
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Mail</th>
-                <th>Management</th>
+                <td>@item.UserId</td>
+                <td>@item.UserName</td>
+                <td>@item.UserRole</td>
+                <td>@item.UserMail</td>
 
+                @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
+                {
+
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("UserDelete", "User", new { id = item.UserId })">
+                            <i class="fas fa-trash"> Delete </i>
+                        </a>
+
+                        <a class="btn btn-warning btn-sm" href="@Url.Action("EditUser", "User", new { id = item.UserId })">
+                            <i class="fas fa-trash"> Update </i>
+                        </a>
+                    </td>
+}
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Where(x => x.UserStatus == true))
-            {
-                <tr>
-                    <td>@item.UserId</td>
-                    <td>@item.UserName</td>
-                    <td>@item.UserRole</td>
-                    <td>@item.UserMail</td>
+        }
 
-                    @if (Session["Role"] != null && Session["Role"].ToString().ToLower() == "admin")
-                    {
+    </tbody>
+</table>
+<br />
 
-                        <td>
-                            <a class="btn btn-danger btn-sm" href="@Url.Action("UserDelete", "User", new { id = item.UserId })">
-                                <i class="fas fa-trash"> Delete </i>
-                            </a>
-
-                            <a class="btn btn-warning btn-sm" href="@Url.Action("EditUser", "User", new { id = item.UserId })">
-                                <i class="fas fa-trash"> Update </i>
-                            </a>
-                        </td>}
-                    </tr>
-            }
-
-        </tbody>
-    </table>
-    <br />
-    @Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
-    {
-        LiElementClasses = new List<string>
-        { "page-link"}
-    })
+@Html.PagedListPager((PagedList.IPagedList)Model, p => Url.Action("SearchBar", new { p, search = ViewBag.CurrentSearch }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string> { "page-link" }
+}
+)
 

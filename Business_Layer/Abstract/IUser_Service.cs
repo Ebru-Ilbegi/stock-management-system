@@ -18,5 +18,6 @@ namespace Business_Layer.Abstract
         void UserDelete(User user);
 
         void UserUpdate(User user);
+
     }
 }

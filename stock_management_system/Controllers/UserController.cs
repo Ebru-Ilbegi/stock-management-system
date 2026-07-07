@@ -103,5 +103,22 @@ namespace stock_management_system.Controllers
                 return View(user); 
             
         }
+
+        [CustomAuthorize("admin", "user")]
+        public ActionResult SearchBar(int p = 1, string search = null)
+        {
+            ViewBag.CurrentSearch = search;
+
+            if (string.IsNullOrEmpty(search))
+            {
+                var uservalues = um.GetList().ToPagedList(p, 20);
+                return View("Index", uservalues);
+            }
+
+            var filteredUsers = um.GetListByFilter(x => x.UserName.Contains(search) || x.UserMail.Contains(search))
+                                  .ToPagedList(p, 20);
+
+            return View("Index", filteredUsers);
+        }
     }
 }
